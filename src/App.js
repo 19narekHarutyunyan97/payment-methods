@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import usePaymentsMethod from "./lib/hooks/usePaymentsMethod";
 
 function App() {
+   const {onChangeHandelPaymentMethods} = usePaymentsMethod({
+       payBtnClassName: 'buy-btn',
+       containerPaymentMethods: 'container-payments'
+   })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ul onClick={(e) => onChangeHandelPaymentMethods(e.target.value, 55)}>
+          <li value={1}>Paypal</li>
+          <li value={2}>Brain</li>
+          <li value={3}>Ameria</li>
+          <li value={4}>2Pay</li>
+          <button id="buy-btn">Buy</button>
+      </ul>
+        <div id="container-payments">
+
+        </div>
     </div>
   );
 }
